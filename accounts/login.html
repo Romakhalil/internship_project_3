@@ -1,0 +1,53 @@
+ 
+
+
+
+{% load static %}
+{% load bootstrap5 %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    {% bootstrap_css %}
+    
+    
+    <link rel="stylesheet" href="{% static 'mysecond.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-4">
+            <div class="form-container">
+                <div class="logo text-center">
+                    <img src="{% static 'logo.jpeg' %}" alt="Logo" class="img-fluid">
+                </div>
+                <h2 class="text-center">Login</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+                {% if error_message %}
+                <p class="text-danger text-center mt-3">{{ error_message }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% bootstrap_javascript %}
+</body>
+</html>
